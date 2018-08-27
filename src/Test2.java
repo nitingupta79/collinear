@@ -1,9 +1,12 @@
+import java.util.Date;
+
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class Test2 {
     public static void main(String[] args) {
+        System.out.println(new Date());
         String length = StdIn.readLine();
         
         Point[] points = new Point[Integer.parseInt(length)];
@@ -30,5 +33,6 @@ public class Test2 {
                 segment.draw();
         }
         StdDraw.show();
+        System.out.println(new Date());
     }
 }
