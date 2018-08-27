@@ -12,29 +12,30 @@ public class BruteCollinearPoints {
     private LineSegment[] segments = new LineSegment[1];
     private int noOfSegments;
 
-    public BruteCollinearPoints(Point[] points) {
+    public BruteCollinearPoints(Point[] points1) {
         // finds all line segments containing 4 points
-        if (points == null) {
+        if (points1 == null) {
             throw new IllegalArgumentException("Provide points");
         }
         
-        for (Point p : points) {
+        for (Point p : points1) {
             if (p == null) {
                 throw new IllegalArgumentException("Null point");
             }
         }
         
+        Point[] points = Arrays.copyOf(points1, points1.length);
         Arrays.sort(points);
 
-        for (int level1 = 0; level1 < points.length - 3; level1++) {
+        for (int level1 = 0; level1 < points.length; level1++) {
             if (points[level1] == null) {
                 throw new IllegalArgumentException("Invalid point");
             }
 
-            for (int level2 = level1 + 1; level2 < points.length - 2; level2++) {
+            for (int level2 = level1 + 1; level2 < points.length; level2++) {
                 double slope1 = validatePoint(points[level2], points[level1]);
 
-                for (int level3 = level2 + 1; level3 < points.length - 1; level3++) {
+                for (int level3 = level2 + 1; level3 < points.length; level3++) {
                     double slope2 = validatePoint(points[level3], points[level1]);
                     
                     if (Double.valueOf(slope1).equals(slope2)) {
